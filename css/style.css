@@ -184,6 +184,12 @@ select:focus-visible {
   font-size: 1.4rem;
   letter-spacing: -0.02em;
   color: var(--text-main);
+  white-space: nowrap;
+}
+@media (max-width: 576px) {
+  .nav-logo {
+    font-size: 1.15rem;
+  }
 }
 .nav-logo span {
   color: var(--accent-accent);
@@ -227,6 +233,17 @@ select:focus-visible {
   justify-content: space-between;
   width: 30px;
   height: 20px;
+}
+
+@media (max-width: 991px) {
+  .custom-nav .navbar-collapse {
+    background-color: var(--bg-primary);
+    padding: 1.25rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    margin-top: 1rem;
+    box-shadow: var(--shadow-md);
+  }
 }
 
 .custom-toggler:focus {
@@ -400,6 +417,17 @@ select:focus-visible {
   margin-bottom: 3.5rem;
 }
 
+@media (max-width: 480px) {
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-cta .btn-custom {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* Code Snippet Card */
 .code-window {
   background-color: var(--bg-secondary);
@@ -407,6 +435,7 @@ select:focus-visible {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   overflow: hidden;
+  width: 100%;
   max-width: 440px;
   margin-left: auto;
   transform: rotate(1deg);
@@ -448,6 +477,15 @@ select:focus-visible {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 575px) {
+  .code-content {
+    font-size: 0.72rem;
+    padding: 1rem;
+  }
 }
 
 .code-content .keyword { color: var(--accent-accent); font-weight: 500; }
@@ -666,6 +704,12 @@ select:focus-visible {
   border-radius: var(--radius-sm);
   padding: 2.25rem;
   transition: var(--transition-smooth);
+}
+
+@media (max-width: 575px) {
+  .service-card {
+    padding: 1.5rem;
+  }
 }
 
 .service-card:hover {
@@ -974,6 +1018,8 @@ select:focus-visible {
   font-size: 1.05rem;
   font-weight: 500;
   color: var(--text-main);
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .contact-value a:hover {
