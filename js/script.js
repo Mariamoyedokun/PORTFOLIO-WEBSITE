@@ -6,16 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
      NAVBAR SCROLL BEHAVIOR
      ========================================================================== */
   const navbar = document.querySelector('.custom-nav');
+  let scrollTicking = false;
   const handleScroll = () => {
-    if (window.scrollY > 20) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        navbar.classList.toggle('scrolled', window.scrollY > 20);
+        scrollTicking = false;
+      });
+      scrollTicking = true;
     }
   };
-  
-  window.addEventListener('scroll', handleScroll);
-  // Initial check in case page is loaded scrolled down
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 
   /* ==========================================================================
@@ -53,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     SCROLL REVEAL ANIMATIONS
+     SCROLL REVEAL ANIMATIONS (IntersectionObserver logic is kept unmodified)
      ========================================================================== */
   const revealElements = document.querySelectorAll('.reveal');
 
