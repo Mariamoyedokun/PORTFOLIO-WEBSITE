@@ -53,36 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     SCROLL REVEAL ANIMATIONS
+     AOS INITIALIZATION
      ========================================================================== */
-  const revealElements = document.querySelectorAll('.reveal');
-
-  if (prefersReducedMotion) {
-    // If user prefers reduced motion, show all elements immediately
-    revealElements.forEach((el) => el.classList.add('active'));
-  } else if ('IntersectionObserver' in window) {
-    const revealObserverOptions = {
-      root: null,
-      rootMargin: '0px 0px -100px 0px', // trigger slightly before entering viewport
-      threshold: 0.1
-    };
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target); // Stop observing once revealed
-        }
-      });
-    }, revealObserverOptions);
-
-    revealElements.forEach((el) => {
-      revealObserver.observe(el);
-    });
-  } else {
-    // Fallback if Intersection Observer not supported
-    revealElements.forEach((el) => el.classList.add('active'));
-  }
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: false,
+    offset: 100,
+    disable: prefersReducedMotion // Respect reduced motion preference
+  });
 
   /* ==========================================================================
      COLLAPSE MOBILE NAVBAR ON NAV LINK CLICK
